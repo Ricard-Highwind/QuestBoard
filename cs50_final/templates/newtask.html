@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Create New Task
+{% endblock %}
+
+{% block main %}
+    <h1>Create New Task</h1>
+    <form action="newtask" method="post">
+        <div>
+            <label for="task">Task:</label>
+            <input type="text" id="task" name="task" placeholder="Enter a brief task title" required>
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" placeholder="Enter detailed task description" required></textarea>
+        </div>
+        <div>
+            <button type="submit">Create Task</button>
+        </div>
+    </form>
+{% endblock %}

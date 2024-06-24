@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Created Tasks
+{% endblock %}
+
+{% block main %}
+    <h1>To Do Tasks</h1>
+    {% for task in tasks %}
+    <div class="task-card">
+        <h2>{{ task.task }}</h2>
+        <p><strong>Description:</strong> {{ task.description }}</p>
+        <p><strong>Created by:</strong> {{ task.creator }}</p>
+        <p><strong>Created at:</strong> {{ task.created_at }}</p>
+        <form action="/todo" method="post">
+            <input type="hidden" name="task_id" value="{{ task.id }}">
+            <button type="submit">Claim Task</button>
+        </form>
+    </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    In Progress
+{% endblock %}
+
+{% block main %}
+    <h1>In Progress Tasks</h1>
+    {% for task in tasks %}
+    <div class="task-card">
+        <h2>{{ task.task }}</h2>
+        <p><strong>Description:</strong> {{ task.description }}</p>
+        <p><strong>Handler:</strong> {{ task.handler }}</p>
+        <p><strong>In Progress At:</strong> {{ task.in_progress_at }}</p>
+        {% if task.handler == session["username"] %}
+        <form action="/inprogress" method="post">
+            <input type="hidden" name="task_id" value="{{ task.id }}">
+            <button type="submit">Mark as Completed</button>
+        </form>
+        {% endif %}
+    </div>
+    {% endfor %}
+{% endblock %}
